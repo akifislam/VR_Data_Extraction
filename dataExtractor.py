@@ -3,11 +3,11 @@ import statistics
 import glob
 import time
 
-path = "/Users/akifislam/Desktop/VR_Data_Extraction/10"
+path = "/Users/akifislam/Desktop/VR_Data_Extraction/5"
 newCSVfile = open('/Users/akifislam/Desktop/summary.csv', 'w')
 writer = csv.writer(newCSVfile)
-
-writer.writerow(['Username', 'Experiment Name', 'Mean WPM', 'Median WPM', 'Mean Error', 'Median Error'])
+serial_counter = 0
+writer.writerow(['Serial','Username', 'Experiment Name', 'Mean WPM', 'Median WPM', 'Mean Error', 'Median Error'])
 
 for cur_path in glob.glob(path + "/**/WPMandTotalER.csv", recursive = True):
 
@@ -18,7 +18,7 @@ for cur_path in glob.glob(path + "/**/WPMandTotalER.csv", recursive = True):
     experiment_name = ""
     slashCounter = 0
 
-    for letter in cur_path[47:]:
+    for letter in cur_path[46:]:
         userdetails+= letter
 
         if (letter == '/'):
@@ -65,7 +65,9 @@ for cur_path in glob.glob(path + "/**/WPMandTotalER.csv", recursive = True):
     mean_ERROR = statistics.mean(ERRORS)
     median_ERROR = statistics.median(ERRORS)
     # mode_ERROR = statistics.mode(ERRORS)
-    writer.writerow([username,experiment_name,mean_WPM,median_WPM,mean_ERROR,median_ERROR])
+    serial_counter+=1
+
+    writer.writerow([serial_counter,username,experiment_name,mean_WPM,median_WPM,mean_ERROR,median_ERROR])
     print(f"WPM Mean : {mean_WPM}, WPM Median : {median_WPM}")
     print(f"Error Mean : {mean_ERROR}, Error Median : {median_ERROR}")
     print()
