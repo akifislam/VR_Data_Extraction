@@ -1,0 +1,18 @@
+File Path are in this format :
+/Users/akifislam/Desktop/VR_Data_Extraction/1/Ishmam Zahin/Gesture Contorller/WPMandTotalER.csv
+
+So first it cuts the full path like this : Ishmam Zahin/Gesture Contorller/WPMandTotalER.csv
+and Then Search for the next '/' to save the user_name.
+
+Same thing for Experiment name.
+
+For this, this program cannot correctly read files named with multiple letter.
+So here is the map :
+
+1 means "1st 10 Persons Data given by Ruhul Bhai"
+5 means "2nd 5 Persons Data"
+7 means "New 15 Persons Controller Data"
+8 means "New 15 Persons Hand Data"
+
+dataExtractorNew created for new task.
+dataExtractor.py may not useful anymore.
